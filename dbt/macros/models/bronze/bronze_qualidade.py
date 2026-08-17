@@ -1,7 +1,7 @@
 {{ config(materialized='table') }}
 
 with src as (
-    select * from {{ source('bronze', 'tb_fraud_credit') }}
+    select * from {{ source('ingest_bronze', 'tb_fraud_credit') }}
 ),
 
 total as (
