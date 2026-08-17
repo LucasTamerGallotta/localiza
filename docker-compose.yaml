@@ -53,7 +53,7 @@ services:
   # Spark Master
   spark-master:
     build:
-      context: ./spark_config
+      context: ./spark/spark_config
       dockerfile: Dockerfile
     container_name: spark-master
     hostname: spark-master
@@ -84,7 +84,7 @@ services:
 
   spark-worker:
     build:
-      context: ./spark_config
+      context: ./spark/spark_config
       dockerfile: Dockerfile
     container_name: spark-worker
     hostname: spark-worker
