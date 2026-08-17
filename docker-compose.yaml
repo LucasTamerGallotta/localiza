@@ -53,7 +53,7 @@ services:
   # Spark Master
   spark-master:
     build:
-      context: ./spark/spark_config
+      context: ./spark_config
       dockerfile: Dockerfile
     container_name: spark-master
     hostname: spark-master
@@ -82,9 +82,33 @@ services:
     networks:
       - spark-network
 
-  spark-worker:
+  spark-worker1:
     build:
-      context: ./spark/spark_config
+      context: ./spark_config
+      dockerfile: Dockerfile
+    container_name: spark-worker
+    hostname: spark-worker
+    command:
+      - /opt/spark/bin/spark-class
+      - org.apache.spark.deploy.worker.Worker
+      - --cores
+      - "2"
+      - --memory
+      - 3g
+      - spark://spark-master:7077
+    environment:
+      <<: *spark-common-env
+    volumes:
+      - ./dataset:/opt/spark/dataset:ro
+      - ./spark/jobs:/opt/spark/jobs:ro
+    depends_on:
+      - spark-master
+    networks:
+      - spark-network
+    
+    spark-worker2:
+    build:
+      context: ./spark_config
       dockerfile: Dockerfile
     container_name: spark-worker
     hostname: spark-worker
