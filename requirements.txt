@@ -1,0 +1,19 @@
+# Astro Runtime includes the following pre-installed providers packages: https://www.astronomer.io/docs/astro/runtime-image-architecture#provider-packages
+
+# MinIO/S3 connectivity
+boto3==1.28.57
+botocore==1.31.57
+
+# Spark provider for Airflow
+apache-airflow-providers-common-compat==1.2.2
+apache-airflow-providers-apache-spark==4.11.3
+
+# Data processing
+pandas==2.1.1
+pyarrow
+
+pytest>=7.4
+pyspark==3.5.1
+pyyaml>=6.0
+requests>=2.31
+python-dotenv>=1.0
